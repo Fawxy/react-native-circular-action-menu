@@ -60,7 +60,8 @@ export default class ActionButton extends Component {
     return [styles.overlay, styles.actionContainer, {
       alignItems,
       justifyContent,
-    }];
+    },
+    this.props.containerStyle];
   }
   getActionsStyle() {
     return [this.getButtonSize()];
@@ -139,7 +140,8 @@ export default class ActionButton extends Component {
                         outputRange: ['0deg', this.props.degrees + 'deg']
                       }),
                     }],
-                }]}>
+                },
+                this.props.style]}>
             {this.renderButtonIcon()}
           </Animated.View>
         </TouchableOpacity>
@@ -274,6 +276,8 @@ ActionButton.propTypes = {
   radius: PropTypes.number,
   children: PropTypes.node,
   position: PropTypes.oneOf(['left', 'center', 'right']),
+  style: PropTypes.object,
+  containerStyle: PropTypes.object,
 };
 
 ActionButton.defaultProps = {
@@ -293,6 +297,8 @@ ActionButton.defaultProps = {
   radius: 100,
   btnOutRange: 'rgba(0,0,0,1)',
   btnOutRangeTxt: 'rgba(255,255,255,1)',
+  style: {},
+  containerStyle: {}
 };
 
 const styles = StyleSheet.create({
